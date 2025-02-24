@@ -1,4 +1,4 @@
-from .appointment import *
+from lib.appointment import *
 
 
 class Doctor:
@@ -8,3 +8,9 @@ class Doctor:
         self.name = name
         self.field = field
         type(self).all_.append(self)
+    
+    def appointments(self):
+        return [appt for appt in Appointment.all_ if self is appt.doctor]
+
+    def patients(self):
+        return list({appt.patient for appt in self.appointments()})
