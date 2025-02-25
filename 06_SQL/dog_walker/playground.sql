@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS owners;
+DROP TABLE IF EXISTS dogs;
+
+CREATE TABLE IF NOT EXISTS owners (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE,
+    phone TEXT UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS dogs (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    breed TEXT,
+    age INTEGER,
+    owner_id INTEGER,
+    FOREIGN KEY (owner_id) REFERENCES owners(id) ON DELETE CASCADE
+);
+
+
